@@ -1,9 +1,10 @@
-import { useState } from 'react'
+
 import './App.css'
 import Options from './components/Options'
 import Description from "./components/Description.jsx";
 import Feedback from "./components/Feedback.jsx";
 import AddLocalStorage from "./components/AddLocalStorage.jsx";
+import Notification from "./components/Notification.jsx";
 
 function App() {
   const [feedbacks, setFeedback] = AddLocalStorage('feedbacks', {
@@ -32,7 +33,9 @@ function App() {
 
         <Options feedbackKeys={Object.keys(feedbacks)} handleClick={handleClick} totalFeedbacks={totalFeedbacks} handleReset={handleReset}/>
 
-        <Feedback feedbacks={[...Object.entries(feedbacks), ['total', totalFeedbacks], ['positive', positiveFeedback]]} totalFeedbacks={totalFeedbacks} />
+        {totalFeedbacks > 0 ? <Feedback
+                feedbacks={[...Object.entries(feedbacks), ['total', totalFeedbacks], ['positive', positiveFeedback]]}/>
+            : <Notification/>}
     </>
   )
 }

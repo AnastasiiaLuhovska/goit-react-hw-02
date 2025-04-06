@@ -1,5 +1,5 @@
-const Feedback = ({feedbacks, totalFeedbacks}) => {
-    return totalFeedbacks > 0 ? (
+const Feedback = ({feedbacks}) => {
+    return  (
         <ul>
             {feedbacks.map(([key, value], index) => (
                 <li key={index}>
@@ -7,8 +7,7 @@ const Feedback = ({feedbacks, totalFeedbacks}) => {
                 </li>
             ))}
         </ul>
-    ) : (
-        <p>No feedbacks yet</p>)
+    )
 };
 
 export default Feedback;
